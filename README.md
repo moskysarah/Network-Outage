@@ -67,30 +67,14 @@ Access ports assigned
 
 Trunk to router configured
 
+## 🖼️ Network Topology
+
+![Network Topology](images/topology.png)
+
+
+
 🚦 Router
 
 Subinterfaces configured
 
 Inter-VLAN routing enabled
-
-Gateways set
-
-🧪 Tests
-
-Same VLAN ping ✅
-
-Different VLAN ping ❌
-
-Management access ✅
-
-Guest isolation ✅
-
-Internet access ✅
-
-⚠️ Issues & Fixes
-
-Trunk misconfiguration → fixed
-
-Wrong VLAN ports → corrected
-
-Subinterfaces down → no shutdown
