@@ -1,23 +1,21 @@
 # Network-Outage 
-
-
 🧭 Project Overview
 
-This project consists of designing and configuring the network infrastructure for KADEA’s new building.
+Design and configuration of KADEA’s new building network.
 
-The objective is to ensure:
+Goals:
 
-Department isolation using VLANs
+VLAN-based department isolation
 
 Secure guest Wi-Fi
 
-Inter-VLAN routing for the Direction
+Inter-VLAN routing for Management
 
 Internet access for all users
 
 🎯 Requirements
 
-20 employees divided into:
+20 employees
 
 Accounting: 5
 
@@ -25,84 +23,74 @@ Sales: 10
 
 Management: 3
 
-Guest Wi-Fi: 2 simultaneous users
+Guest Wi-Fi: 2 users
 
-Departments must not communicate with each other
+Departments isolated
 
-Only Management can access other departments
+Only Management can access others
 
-Internet access for all
+Internet for all
 
-Basic security for guest network
+Basic guest security
 
 🏗️ Network Architecture
 
-Devices used:
+Devices:
 
 Router (2911/1941)
 
 Switch (2960)
 
-PCs for testing
+Test PCs
 
-WRT300N for guest Wi-Fi
+WRT300N (guest Wi-Fi)
 
-Design choice:
+Design:
 
-Router-on-a-Stick for inter-VLAN routing
+Router-on-a-Stick
 
-VLAN segmentation for security
+VLAN segmentation
 
-Trunk link between switch and router
+Trunk between switch and router
 
 🌐 IP Addressing Plan
-Service	VLAN	Network	Gateway	DHCP Range
-Accounting	10	192.168.10.0/24	192.168.10.254	.10–.200
-Sales	20	192.168.20.0/24	192.168.20.254	.10–.200
-Management	30	192.168.30.0/24	192.168.30.254	.10–.200
-Guest Wi-Fi	40	192.168.40.0/24	192.168.40.254	.10–.200
-🔧 Switch Configuration (Summary)
+Service	VLAN	Network	Gateway
+Accounting	10	192.168.10.0/24	192.168.10.254
+Sales	20	192.168.20.0/24	192.168.20.254
+Management	30	192.168.30.0/24	192.168.30.254
+Guest Wi-Fi	40	192.168.40.0/24	192.168.40.254
+🔧 Switch
 
-VLANs created: 10, 20, 30, 40
+VLANs: 10, 20, 30, 40
 
-Access ports assigned per department
+Access ports assigned
 
-Trunk configured on uplink port to router
+Trunk to router configured
 
-🚦 Router Configuration (Summary)
+🚦 Router
 
-Subinterfaces configured:
-
-G0/0.10
-
-G0/0.20
-
-G0/0.30
-
-G0/0.40
+Subinterfaces configured
 
 Inter-VLAN routing enabled
 
-Gateways configured for each VLAN
+Gateways set
 
-🧪 Tests Performed
+🧪 Tests
 
 Same VLAN ping ✅
 
 Different VLAN ping ❌
 
-Management → other VLANs ✅
+Management access ✅
 
-Guest Wi-Fi isolation ✅
+Guest isolation ✅
 
-Internet connectivity ✅
+Internet access ✅
 
-⚠️ Issues Encountered
+⚠️ Issues & Fixes
 
-Example (à adapter) :
+Trunk misconfiguration → fixed
 
-Trunk not working initially
+Wrong VLAN ports → corrected
 
-Wrong VLAN assignment on some ports
-
-Subinterfaces were administratively down
+Subinterfaces down → no shutdown
